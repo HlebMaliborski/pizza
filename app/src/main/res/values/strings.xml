@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Papa codes</string>
+    <string name="error_message_network">Проверьте подключение к интернету!</string>
+
+    <string-array name="cities_array">
+        <item>Любой</item>
+        <item>Минск</item>
+        <item>Витебск</item>
+        <item>Могилев</item>
+        <item>Гомель</item>
+        <item>Бобруйск</item>
+        <item>Гродно</item>
+        <item>Мозырь</item>
+    </string-array>
+
+    <string name="radio_item_all">Все</string>
+    <string name="radio_item_23">23см</string>
+    <string name="radio_item_30">30см</string>
+    <string name="radio_item_35">35см</string>
+    <string name="radio_item_40">40см</string>
+
+    <string name="filter_23">23</string>
+    <string name="filter_30">30</string>
+    <string name="filter_35">35</string>
+    <string name="filter_40">40</string>
+
+    <string name="seek_from">От</string>
+    <string name="seek_to">%1d рублей</string>
+
+    <string name="bottom_filter">Фильтры</string>
+</resources>

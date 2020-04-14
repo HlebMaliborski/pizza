@@ -1,0 +1,44 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textAppearance">@style/TextViewStyle</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerStyle</item>
+    </style>
+
+    <style name="TextViewStyle" parent="@android:style/TextAppearance.Widget.TextView">
+        <item name="android:textAppearance">@style/GothamRegular</item>
+    </style>
+
+    <style name="GothamRegular" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/gotham</item>
+    </style>
+
+    <style name="GothamBlack" parent="TextAppearance.AppCompat">
+        <item name="android:textStyle">normal</item>
+        <item name="fontFamily">@font/gothamblack</item>
+    </style>
+
+    <style name="SpinnerStyle" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:textColor">@color/colorAccent</item>
+    </style>
+
+    <style name="ToggleButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:background">@drawable/toggle_background</item>
+        <item name="android:button">@null</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingRight">8dp</item>
+    </style>
+
+</resources>
