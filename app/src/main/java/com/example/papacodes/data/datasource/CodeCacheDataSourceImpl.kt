@@ -19,7 +19,7 @@ class CodeCacheDataSourceImpl(private val cache: CodeCache) : CodeCacheDataSourc
         val priceFilter = filter[PRICE] ?: RESET
 
         val filteredDataByCity = if (cityFilter != RESET) cache.get().codes.filter {
-            it.city.contains(cityFilter)
+            it.city.contains(cityFilter) || it.city.contains("Все города")
         } else cache.get().codes
 
         val filteredDataBySize = if (sizeFilter != RESET) filteredDataByCity.filter {
@@ -27,12 +27,8 @@ class CodeCacheDataSourceImpl(private val cache: CodeCache) : CodeCacheDataSourc
         } else filteredDataByCity
 
         val filteredDataByPrice = if (priceFilter != RESET) {
-            val prices = priceFilter.split("-")
-            val minPrice = prices[0]
-            val maxPrice = prices[1]
-
             filteredDataBySize.filter {
-                it.priceFrom >= minPrice.toInt() && it.priceFrom <= maxPrice.toInt()
+                it.priceFrom <= priceFilter.toInt()
             }
         } else filteredDataBySize
 

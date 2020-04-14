@@ -25,7 +25,9 @@
     <string name="filter_40">40</string>
 
     <string name="seek_from">От</string>
-    <string name="seek_to">%1d рублей</string>
+    <string name="seek_to">Заказ на %1d рублей</string>
 
     <string name="bottom_filter">Фильтры</string>
+
+    <string name="filter_all_cities">Все города</string>
 </resources>

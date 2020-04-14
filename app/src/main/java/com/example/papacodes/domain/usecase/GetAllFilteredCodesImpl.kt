@@ -11,7 +11,16 @@ class GetAllFilteredCodesImpl(private val repository: CodeRepository) :
         return when (val result = repository.getAllFilteredCodes(params.filter)) {
             is Either.Error -> result
             is Either.Success -> {
-                Either.Success(result.data)
+                val sortedData = result.data.codes.sortedBy {
+                    it.priceFrom
+                }
+                Either.Success(
+                    DomainCodeModel(
+                        sortedData,
+                        result.data.maxPrice,
+                        result.data.minPrice
+                    )
+                )
             }
         }
     }

@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.SeekBar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.appyvet.materialrangebar.RangeBar
 import com.example.core_common.result.Failure
 import com.example.papacodes.R
 import com.example.papacodes.presentation.extensions.observeViewState
@@ -60,26 +60,19 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
     }
 
     private fun initPriseSeekBar(maxValue: Int, minValue: Int) {
-        codeSeekBar.tickEnd = maxValue.toFloat()
-        codeSeekBar.tickStart = minValue.toFloat()
-        codeSeekBar.setOnRangeBarChangeListener(object : RangeBar.OnRangeBarChangeListener {
-            override fun onTouchEnded(rangeBar: RangeBar?) {}
-
-            override fun onRangeChangeListener(
-                rangeBar: RangeBar?,
-                leftPinIndex: Int,
-                rightPinIndex: Int,
-                leftPinValue: String?,
-                rightPinValue: String?
-            ) {
-                funViewModel.onFilter(PRICE, "$leftPinValue-$rightPinValue")
+        codeSeekBar.max = maxValue - minValue
+        codeSeekBar.progress = maxValue - minValue
+        codeSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                seekTo.text = getString(R.string.seek_to, progress + minValue)
+                funViewModel.onFilter(PRICE, (progress + minValue).toString())
             }
 
-            override fun onTouchStarted(rangeBar: RangeBar?) {}
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
 
-
-        seekTo.text = getString(R.string.seek_to, minValue)
+        seekTo.text = getString(R.string.seek_to, maxValue)
     }
 
     private fun initCitySpinner() {

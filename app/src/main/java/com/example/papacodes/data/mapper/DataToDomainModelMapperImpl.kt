@@ -10,12 +10,12 @@ class DataToDomainModelMapperImpl : DataToDomainModelMapper {
     override fun map(data: DataCodeModelDto): DomainCodeModel {
         val priceFromRegex = "[0-9]*\\.?[0-9]+".toRegex()
         val codes: List<DomainCode> = data.codes.map {
-            val listItems = it.name.split(" - ").toList().reversed()
+            val listItems = it.name.split("-").toList().reversed()
             DomainCode(
                 it.code,
-                listItems[2],
-                listItems[1],
-                listItems[0],
+                listItems[2].trimStart(),
+                listItems[1].replace(".", ",").trimStart(),
+                listItems[0].trimStart(),
                 priceFromRegex.find(listItems[1])?.value?.toDouble()?.roundToInt() ?: 0
             )
         }

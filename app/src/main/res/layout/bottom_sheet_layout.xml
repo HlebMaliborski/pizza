@@ -4,37 +4,41 @@
     android:id="@+id/codeBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorAccent"
+    android:background="@drawable/rounded_sheet"
     android:visibility="visible"
+    android:descendantFocusability="afterDescendants"
     app:behavior_peekHeight="@dimen/margin_50"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:clickable="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
         android:id="@+id/imageFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_8"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:src="@drawable/filter_icon"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/filter"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:focusableInTouchMode="false"
-        android:clickable="false"
-        android:focusable="false"
-        android:id="@+id/textView"
+        android:id="@+id/filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_8"
         android:layout_marginLeft="@dimen/margin_8"
         android:layout_marginTop="@dimen/margin_8"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
         android:text="@string/bottom_filter"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_16"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -54,37 +58,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageFilter" />
 
-    <TextView
-        android:id="@+id/seekFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_24"
-        android:text="@string/seek_from"
-        app:layout_constraintStart_toStartOf="@+id/codeCitySpinner"
-        app:layout_constraintTop_toBottomOf="@+id/codeCitySpinner" />
-
-    <com.appyvet.materialrangebar.RangeBar
+    <androidx.appcompat.widget.AppCompatSeekBar
         android:id="@+id/codeSeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_24"
-        android:layout_marginLeft="@dimen/margin_24"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="@dimen/margin_24"
-        android:layout_marginRight="@dimen/margin_24"
-        app:layout_constraintBottom_toBottomOf="@+id/seekFrom"
-        app:layout_constraintEnd_toStartOf="@+id/seekTo"
-        app:layout_constraintStart_toEndOf="@+id/seekFrom"
-        app:layout_constraintTop_toTopOf="@+id/seekFrom" />
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekTo" />
 
     <TextView
         android:id="@+id/seekTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/seek_to"
-        app:layout_constraintBottom_toBottomOf="@+id/codeSeekBar"
-        app:layout_constraintEnd_toEndOf="@+id/codeCitySpinner"
-        app:layout_constraintTop_toTopOf="@+id/codeSeekBar" />
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/codeCitySpinner" />
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -101,6 +98,7 @@
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/allSizes"
             style="@style/ToggleButton"
+            android:background="@drawable/toggle_background_left_rounded"
             android:text="@string/radio_item_all" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
@@ -116,11 +114,13 @@
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/size35"
             style="@style/ToggleButton"
+            android:background="@drawable/toggle_background_top_bottom"
             android:text="@string/radio_item_35" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/size40"
             style="@style/ToggleButton"
+            android:background="@drawable/toggle_background_right_rounded"
             android:text="@string/radio_item_40" />
 
     </RadioGroup>
