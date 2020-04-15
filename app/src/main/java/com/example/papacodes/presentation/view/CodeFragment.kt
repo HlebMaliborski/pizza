@@ -79,9 +79,9 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
         ArrayAdapter.createFromResource(
             activity as Context,
             R.array.cities_array,
-            android.R.layout.simple_spinner_item
+            R.layout.spinner_text
         ).also { adapter ->
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.setDropDownViewResource(R.layout.spinner_layout)
             codeCitySpinner.adapter = adapter
             codeCitySpinner.setSelection(0, false)
             codeCitySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
