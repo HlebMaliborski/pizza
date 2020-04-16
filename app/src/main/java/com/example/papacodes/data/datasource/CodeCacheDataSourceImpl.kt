@@ -13,6 +13,10 @@ class CodeCacheDataSourceImpl(private val cache: CodeCache) : CodeCacheDataSourc
         return cache.get()
     }
 
+    override suspend fun storeCopiedCode(code: String): String {
+        return cache.storeCopiedCode(code)
+    }
+
     override suspend fun getAllCodesFilteredByCity(filter: Map<String, String>): DomainCodeModel {
         val cityFilter = filter[CITY] ?: RESET
         val sizeFilter = filter[SIZE] ?: RESET
@@ -44,6 +48,7 @@ class CodeCacheDataSourceImpl(private val cache: CodeCache) : CodeCacheDataSourc
 
 interface CodeCacheDataSource {
     suspend fun getAllCodes(): DomainCodeModel
+    suspend fun storeCopiedCode(code: String): String
     suspend fun getAllCodesFilteredByCity(filter: Map<String, String>): DomainCodeModel
     suspend fun updateCodes(dataCode: DomainCodeModel)
     suspend fun isCached(): Boolean

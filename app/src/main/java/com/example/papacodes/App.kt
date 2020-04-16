@@ -1,6 +1,7 @@
 package com.example.papacodes
 
 import android.app.Application
+import com.example.papacodes.common.di.navigationModule
 import com.example.papacodes.common.di.utilModule
 import com.example.papacodes.data.di.dataModule
 import com.example.papacodes.domain.di.domainModule
@@ -16,7 +17,15 @@ class App : Application() {
         startKoin {
             androidLogger()
             androidContext(this@App)
-            loadKoinModules(listOf(utilModule, presentationModule, dataModule, domainModule))
+            loadKoinModules(
+                listOf(
+                    utilModule,
+                    presentationModule,
+                    dataModule,
+                    domainModule,
+                    navigationModule
+                )
+            )
         }
     }
 }

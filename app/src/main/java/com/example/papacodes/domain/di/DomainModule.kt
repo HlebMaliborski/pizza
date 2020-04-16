@@ -2,10 +2,7 @@ package com.example.papacodes.domain.di
 
 import com.example.papacodes.data.repository.CodeRepositoryImpl
 import com.example.papacodes.domain.repository.CodeRepository
-import com.example.papacodes.domain.usecase.GetAllCodeUseCase
-import com.example.papacodes.domain.usecase.GetAllCodesUseCaseImpl
-import com.example.papacodes.domain.usecase.GetAllFilteredCodes
-import com.example.papacodes.domain.usecase.GetAllFilteredCodesImpl
+import com.example.papacodes.domain.usecase.*
 import org.koin.dsl.module
 
 val domainModule = module {
@@ -20,4 +17,5 @@ val domainModule = module {
 
     factory<GetAllCodeUseCase> { GetAllCodesUseCaseImpl(repository = get()) }
     factory<GetAllFilteredCodes> { GetAllFilteredCodesImpl(repository = get()) }
+    factory<StoreCopiedCodeUseCase> { StoreCopiedCodeUseCaseImpl(repository = get()) }
 }

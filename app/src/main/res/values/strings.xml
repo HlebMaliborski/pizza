@@ -30,4 +30,6 @@
     <string name="bottom_filter">Фильтры</string>
 
     <string name="filter_all_cities">Все города</string>
+
+    <string name="message_copy_done">Код %1s скопирован!</string>
 </resources>

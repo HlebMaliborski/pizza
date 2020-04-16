@@ -21,7 +21,7 @@ val dataModule = module {
     single<DataToDomainModelMapper> { DataToDomainModelMapperImpl() }
     single<CodeNetworkDataSource> { CodeNetworkDataSourceImpl(api = get()) }
     single<CodeCacheDataSource> { CodeCacheDataSourceImpl(cache = get()) }
-    single<CodeCache> { CodeCacheImpl() }
+    single<CodeCache> { CodeCacheImpl(context = get()) }
 
     single { provideOkHttpClient(get()) }
     single { provideHttpLoggingInterceptor() }

@@ -15,6 +15,10 @@ class CodeRepositoryImpl(
     private val networkManager: NetworkManager,
     private val mapper: DataToDomainModelMapper
 ) : CodeRepository {
+    override suspend fun storeCopiedCode(code: String): Either<Failure, String> {
+        return Either.Success(cacheDataSource.storeCopiedCode(code))
+    }
+
     override suspend fun getAllCodes(): Either<Failure, DomainCodeModel> {
         if (!networkManager.isNetworkAvailable()) {
             return Either.Error(Failure.NetworkFailure.NetworkConnection)

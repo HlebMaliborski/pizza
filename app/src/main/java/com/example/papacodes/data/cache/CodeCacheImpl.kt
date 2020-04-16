@@ -1,8 +1,11 @@
 package com.example.papacodes.data.cache
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context
 import com.example.papacodes.domain.model.DomainCodeModel
 
-class CodeCacheImpl : CodeCache {
+class CodeCacheImpl(private val context: Context) : CodeCache {
     private var dataCodeModel: DomainCodeModel = DomainCodeModel()
 
     override suspend fun get(): DomainCodeModel = dataCodeModel
@@ -12,4 +15,12 @@ class CodeCacheImpl : CodeCache {
     }
 
     override suspend fun isCached(): Boolean = dataCodeModel.codes.isNotEmpty()
+
+    override suspend fun storeCopiedCode(code: String): String {
+        val clipboardManager =
+            context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+        val clip: ClipData = ClipData.newPlainText("simple text", code)
+        clipboardManager.setPrimaryClip(clip)
+        return code
+    }
 }

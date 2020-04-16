@@ -42,4 +42,8 @@
         <item name="colorControlNormal">@color/colorPrimaryOpacity</item>
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
+
+    <style name="CustomFloatingTheme" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="colorAccent">@color/colorGold</item>
+    </style>
 </resources>

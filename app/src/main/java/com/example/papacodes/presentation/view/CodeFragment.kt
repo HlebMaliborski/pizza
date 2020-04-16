@@ -9,16 +9,19 @@ import android.widget.SeekBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core_common.result.Failure
 import com.example.papacodes.R
+import com.example.papacodes.common.view.BaseFragment
 import com.example.papacodes.presentation.extensions.observeViewState
 import com.example.papacodes.presentation.extensions.visibility
 import com.example.papacodes.presentation.model.PresentationCodeModel
 import com.example.papacodes.presentation.recyclerview.CodeAdapter
 import com.example.papacodes.presentation.viewmodel.CodeViewModel
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.CITY
+import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.ERROR
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.PRICE
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.RESET
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.SIZE
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_code.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -29,7 +32,7 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
     private val codeAdapter: CodeAdapter by lazy {
         CodeAdapter().apply {
             listener = {
-                //copy code
+                funViewModel.onCopyCode(it.code)
             }
         }
     }
@@ -41,10 +44,11 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
 
     private fun initRecyclerView() {
         codeRecyclerView.apply {
-            layoutManager = LinearLayoutManager(activity)
+            layoutManager = LinearLayoutManager(context)
             adapter = codeAdapter
             setHasFixedSize(true)
             itemAnimator = null
+            isMotionEventSplittingEnabled = false
         }
     }
 
@@ -114,6 +118,14 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
         observeViewState(funViewModel.viewState) {
             renderViewState(it)
         }
+
+        observeViewState(funViewModel.copyIsDone) {
+            if (it != ERROR) {
+                val snack = Snackbar.make(codeRecyclerView,"This is a simple Snackbar",Snackbar.LENGTH_LONG)
+                snack.show()
+                notify(R.string.message_copy_done, it)
+            }
+        }
     }
 
     private fun renderViewState(viewState: CodeViewModel.ViewState) {
@@ -127,6 +139,7 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
         codeProgressBar.visibility(isLoading)
         codeRecyclerView.visibility(!isLoading)
         codeBottomSheet.visibility(!isLoading)
+        fab.visibility(!isLoading)
     }
 
     private fun handleResult(result: PresentationCodeModel?) {
@@ -142,6 +155,13 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
             initSizeRadioGroup()
             initPriseSeekBar(result.maxPrice, result.minPrice)
             initBottomSheet()
+            initFab()
+        }
+    }
+
+    private fun initFab() {
+        fab.setOnClickListener {
+            funViewModel.onProcessCode()
         }
     }
 

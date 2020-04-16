@@ -1,4 +1,4 @@
-package com.example.papacodes.presentation.viewmodel
+package com.example.papacodes.common.viewmodel
 
 import androidx.lifecycle.ViewModel
 

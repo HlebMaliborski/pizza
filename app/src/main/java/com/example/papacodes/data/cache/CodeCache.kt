@@ -6,4 +6,5 @@ interface CodeCache {
     suspend fun get(): DomainCodeModel
     suspend fun put(codeModel: DomainCodeModel)
     suspend fun isCached(): Boolean
+    suspend fun storeCopiedCode(code: String): String
 }

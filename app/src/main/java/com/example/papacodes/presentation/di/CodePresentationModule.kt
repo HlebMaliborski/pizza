@@ -11,7 +11,9 @@ val presentationModule = module {
         CodeViewModel(
             getAllCodeUseCase = get(),
             getAllCodesFilteredByCity = get(),
-            mapper = get()
+            storeCopiedCodeUseCase = get(),
+            mapper = get(),
+            navigator = get()
         )
     }
 
