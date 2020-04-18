@@ -35,9 +35,7 @@ sealed class Failure {
         object SqlException : DatabaseFailure()
     }
 
-    abstract class CacheFailure : Failure() {
-        object DontNeedToUpdate : CacheFailure()
-    }
+    object MappingFailure : Failure()
 
     object None : Failure()
 }

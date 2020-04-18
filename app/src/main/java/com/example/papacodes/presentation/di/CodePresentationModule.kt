@@ -10,7 +10,7 @@ val presentationModule = module {
     viewModel {
         CodeViewModel(
             getAllCodeUseCase = get(),
-            getAllCodesFilteredByCity = get(),
+            getAllFilteredCodes = get(),
             storeCopiedCodeUseCase = get(),
             mapper = get(),
             navigator = get()

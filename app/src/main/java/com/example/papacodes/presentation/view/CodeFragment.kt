@@ -21,7 +21,6 @@ import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.PRIC
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.RESET
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.SIZE
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_code.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -40,6 +39,67 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViewState()
+        initStartingViews()
+    }
+
+    private fun initStartingViews() {
+        codeRefreshLayout.isEnabled = false
+    }
+
+
+    private fun initViewState() {
+        observeViewState(funViewModel.viewState) {
+            renderViewState(it)
+        }
+
+        observeViewState(funViewModel.copyIsDone) {
+            if (it != ERROR) {
+                notify(R.string.message_copy_done, it)
+            }
+        }
+    }
+
+    private fun renderViewState(viewState: CodeViewModel.ViewState) {
+        handleInitialization(viewState.presentationModel, viewState.initializeView)
+        handleFailure(viewState.failure)
+        handleLoading(viewState.isFirstLoading)
+        handleResult(viewState.presentationModel)
+    }
+
+    private fun handleLoading(isLoading: Boolean) {
+        codeProgressBar.visibility(isLoading)
+        codeRecyclerView.visibility(!isLoading)
+        codeBottomSheet.visibility(!isLoading)
+        fab.visibility(!isLoading)
+        codeRefreshLayout.visibility(!isLoading)
+    }
+
+    private fun handleResult(result: PresentationCodeModel?) {
+        if (result != null) {
+            codeRefreshLayout.isEnabled = true
+            codeRefreshLayout.isRefreshing = false
+            codeAdapter.submitList(result.codes)
+        }
+    }
+
+    private fun handleFailure(failure: Failure) {
+        codeRefreshLayout.isRefreshing = false
+        when (failure) {
+            is Failure.NetworkFailure -> notify(R.string.error_message_network)
+            is Failure.MappingFailure -> notify(R.string.error_message_mapping)
+        }
+    }
+
+    private fun handleInitialization(result: PresentationCodeModel?, initializeView: Boolean) {
+        if (result != null && initializeView) {
+            initRecyclerView()
+            initCitySpinner()
+            initSizeRadioGroup()
+            initPriseSeekBar(result.maxPrice, result.minPrice)
+            initBottomSheet()
+            initFab()
+            initSwipeLayout()
+        }
     }
 
     private fun initRecyclerView() {
@@ -114,60 +174,15 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
         size40.setOnClickListener { funViewModel.onFilter(SIZE, getString(R.string.filter_40)) }
     }
 
-    private fun initViewState() {
-        observeViewState(funViewModel.viewState) {
-            renderViewState(it)
-        }
-
-        observeViewState(funViewModel.copyIsDone) {
-            if (it != ERROR) {
-                val snack = Snackbar.make(codeRecyclerView,"This is a simple Snackbar",Snackbar.LENGTH_LONG)
-                snack.show()
-                notify(R.string.message_copy_done, it)
-            }
-        }
-    }
-
-    private fun renderViewState(viewState: CodeViewModel.ViewState) {
-        handleInitialization(viewState.presentationModel, viewState.initializeView)
-        handleFailure(viewState.failure)
-        handleLoading(viewState.isLoading)
-        handleResult(viewState.presentationModel)
-    }
-
-    private fun handleLoading(isLoading: Boolean) {
-        codeProgressBar.visibility(isLoading)
-        codeRecyclerView.visibility(!isLoading)
-        codeBottomSheet.visibility(!isLoading)
-        fab.visibility(!isLoading)
-    }
-
-    private fun handleResult(result: PresentationCodeModel?) {
-        if (result != null) {
-            codeAdapter.submitList(result.codes)
-        }
-    }
-
-    private fun handleInitialization(result: PresentationCodeModel?, initializeView: Boolean) {
-        if (result != null && initializeView) {
-            initRecyclerView()
-            initCitySpinner()
-            initSizeRadioGroup()
-            initPriseSeekBar(result.maxPrice, result.minPrice)
-            initBottomSheet()
-            initFab()
+    private fun initSwipeLayout() {
+        codeRefreshLayout.setOnRefreshListener {
+            funViewModel.onUpdateCodes()
         }
     }
 
     private fun initFab() {
         fab.setOnClickListener {
             funViewModel.onProcessCode()
-        }
-    }
-
-    private fun handleFailure(failure: Failure) {
-        when (failure) {
-            is Failure.NetworkFailure -> notify(R.string.error_message_network)
         }
     }
 }

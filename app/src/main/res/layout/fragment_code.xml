@@ -8,21 +8,28 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_55">
 
-        <ProgressBar
+        <androidx.core.widget.ContentLoadingProgressBar
             android:id="@+id/codeProgressBar"
             android:layout_width="@dimen/progress_bar_size"
             android:layout_height="@dimen/progress_bar_size"
             android:layout_gravity="center"
             android:visibility="gone" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/codeRecyclerView"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/codeRefreshLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:visibility="gone"
-            tools:listitem="@layout/item_code" />
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/codeRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                tools:listitem="@layout/item_code" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </FrameLayout>
 
     <include layout="@layout/bottom_sheet_layout" />
@@ -31,11 +38,13 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:background="@color/colorWhite"
-        android:theme="@style/CustomFloatingTheme"
+        android:layout_margin="@dimen/margin_20"
+        android:backgroundTintMode="src_in"
+        android:src="@drawable/pizza_icon"
         android:visibility="gone"
+        app:backgroundTint="@color/colorGold"
         app:layout_anchor="@+id/codeBottomSheet"
         app:layout_anchorGravity="top|end"
-        app:rippleColor="@color/colorGoldLight" />
+        app:rippleColor="@color/colorGoldLight"
+        app:tint="@color/colorWhite" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

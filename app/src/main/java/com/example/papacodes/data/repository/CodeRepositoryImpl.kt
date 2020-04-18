@@ -27,9 +27,13 @@ class CodeRepositoryImpl(
         return when (val result = networkDataSource.getAllCodes()) {
             is Either.Error -> result
             is Either.Success -> {
-                val mappedData = mapper.map(result.data)
-                cacheDataSource.updateCodes(mappedData)
-                Either.Success(mappedData)
+                try {
+                    val mappedData = mapper.map(result.data)
+                    cacheDataSource.updateCodes(mappedData)
+                    Either.Success(mappedData)
+                } catch (exception: Exception) {
+                    Either.Error(Failure.MappingFailure)
+                }
             }
         }
     }

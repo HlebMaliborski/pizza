@@ -4,17 +4,17 @@
     android:id="@+id/codeBottomSheet"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_sheet"
+    android:background="@color/colorWhite"
     android:descendantFocusability="afterDescendants"
-    android:visibility="visible"
-    app:behavior_peekHeight="@dimen/margin_50"
+    android:visibility="gone"
+    app:behavior_peekHeight="@dimen/margin_55"
     app:layout_behavior="@string/bottom_sheet_behavior">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageFilter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_12"
         android:src="@drawable/filter_icon"
         app:layout_constraintEnd_toStartOf="@+id/filter"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,13 +22,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/filter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_8"
-        android:layout_marginLeft="@dimen/margin_8"
-        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_12"
         android:clickable="false"
         android:focusable="false"
         android:focusableInTouchMode="false"
@@ -47,8 +46,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="@dimen/margin_16"
-        android:layout_marginEnd="2dp"
+        android:layout_marginTop="@dimen/margin_35"
+        android:layout_marginEnd="@dimen/margin_2"
         android:spinnerMode="dialog"
         android:theme="@style/SpinnerTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,22 +58,21 @@
         android:id="@+id/codeSeekBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_8"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekTo" />
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/seekTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginTop="@dimen/margin_16"
         android:text="@string/seek_to"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="parent"

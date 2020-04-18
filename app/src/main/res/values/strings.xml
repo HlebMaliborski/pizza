@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Papa codes</string>
+    <string name="app_name">Коды Папы Джон’с</string>
     <string name="error_message_network">Проверьте подключение к интернету!</string>
+    <string name="error_message_mapping">Что-то пошло не так, попробуйте позже!</string>
 
     <string-array name="cities_array">
         <item>Любой</item>

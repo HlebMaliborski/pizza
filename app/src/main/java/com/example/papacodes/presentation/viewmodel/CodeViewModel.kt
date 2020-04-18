@@ -17,7 +17,7 @@ import kotlinx.coroutines.launch
 class CodeViewModel(
     private val mapper: DomainToPresentationMapper,
     private val getAllCodeUseCase: GetAllCodeUseCase,
-    private val getAllCodesFilteredByCity: GetAllFilteredCodes,
+    private val getAllFilteredCodes: GetAllFilteredCodes,
     private val storeCopiedCodeUseCase: StoreCopiedCodeUseCase,
     private val navigator: Navigator
 ) : BaseViewModel() {
@@ -44,7 +44,8 @@ class CodeViewModel(
     fun onFilter(type: String, value: String) {
         filterMap[type] = value
         viewModelScope.launch {
-            _viewState.value = handleResult(getAllCodesFilteredByCity.invoke(Params(filterMap)))
+            _viewState.value =
+                handleResult(getAllFilteredCodes.invoke(Params(filterMap)))
         }
     }
 
@@ -56,6 +57,13 @@ class CodeViewModel(
         viewModelScope.launch {
             _copyIsDone.value =
                 handleCopyResult(storeCopiedCodeUseCase.invoke(ParamsOfCopied(code)))
+        }
+    }
+
+    fun onUpdateCodes() {
+        viewModelScope.launch {
+            getAllCodeUseCase.invoke(BaseUseCase.None())
+            _viewState.value = handleResult(getAllFilteredCodes.invoke(Params(filterMap)))
         }
     }
 
@@ -71,12 +79,12 @@ class CodeViewModel(
     private fun handleResult(result: Either<Failure, DomainCodeModel>): ViewState {
         return when (result) {
             is Either.Error -> currentViewState().copy(
-                isLoading = false,
+                isFirstLoading = false,
                 failure = result.a,
                 initializeView = false
             )
             is Either.Success -> currentViewState().copy(
-                isLoading = false,
+                isFirstLoading = false,
                 failure = Failure.None,
                 presentationModel = mapper.map(result.data),
                 initializeView = false
@@ -85,7 +93,7 @@ class CodeViewModel(
     }
 
     data class ViewState(
-        val isLoading: Boolean = true,
+        val isFirstLoading: Boolean = true,
         val failure: Failure = Failure.None,
         val presentationModel: PresentationCodeModel? = null,
         val initializeView: Boolean = false
