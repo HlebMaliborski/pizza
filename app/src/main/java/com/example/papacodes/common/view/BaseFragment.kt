@@ -14,20 +14,13 @@ abstract class BaseFragment(@LayoutRes layout: Int) : Fragment(layout) {
     }
 
     protected fun notify(@StringRes message: Int, vararg: String) {
-        /*val toast = Toast.makeText(
-            context,
-            getString(message, vararg), Toast.LENGTH_SHORT
-        )
-        toast.setGravity(Gravity.CENTER_HORIZONTAL and Gravity.CENTER_VERTICAL, 0, 0)
-        toast.show()*/
-
         toast = if (toast == null) {
-            Toast.makeText(context, getString(message, vararg), Toast.LENGTH_SHORT);
+            Toast.makeText(context, getString(message, vararg), Toast.LENGTH_SHORT)
         } else {
-            toast?.cancel();
-            Toast.makeText(context, getString(message, vararg), Toast.LENGTH_SHORT);
+            toast?.cancel()
+            Toast.makeText(context, getString(message, vararg), Toast.LENGTH_SHORT)
         }
         toast?.setGravity(Gravity.CENTER_HORIZONTAL and Gravity.CENTER_VERTICAL, 0, 0)
-        toast?.show();
+        toast?.show()
     }
 }

@@ -7,7 +7,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.core_common.result.Failure
+import com.example.papacodes.common.response.Failure
 import com.example.papacodes.R
 import com.example.papacodes.common.view.BaseFragment
 import com.example.papacodes.presentation.extensions.observeViewState

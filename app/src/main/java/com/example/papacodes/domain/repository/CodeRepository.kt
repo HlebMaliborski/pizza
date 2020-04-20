@@ -1,6 +1,6 @@
 package com.example.papacodes.domain.repository
 
-import com.example.core_common.result.Failure
+import com.example.papacodes.common.response.Failure
 import com.example.papacodes.common.response.Either
 import com.example.papacodes.domain.model.DomainCodeModel
 

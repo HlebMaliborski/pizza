@@ -58,9 +58,3 @@ class SafeClickListener(
     }
 }
 
-inline fun View.setSafeOnClickListener(crossinline onSafeClick: (View) -> Unit) {
-    val safeClickListener = SafeClickListener {
-        onSafeClick(it)
-    }
-    setOnClickListener(safeClickListener)
-}

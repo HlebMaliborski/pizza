@@ -2,9 +2,11 @@ package com.example.papacodes
 
 import android.app.Application
 import com.example.papacodes.common.di.navigationModule
+import com.example.papacodes.common.di.shareModule
 import com.example.papacodes.common.di.utilModule
 import com.example.papacodes.data.di.dataModule
 import com.example.papacodes.domain.di.domainModule
+import com.example.papacodes.main.di.mainModule
 import com.example.papacodes.presentation.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -23,7 +25,9 @@ class App : Application() {
                     presentationModule,
                     dataModule,
                     domainModule,
-                    navigationModule
+                    navigationModule,
+                    shareModule,
+                    mainModule
                 )
             )
         }

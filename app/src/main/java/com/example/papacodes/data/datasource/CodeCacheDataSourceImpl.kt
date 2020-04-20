@@ -7,8 +7,7 @@ import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.PRIC
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.RESET
 import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.SIZE
 
-class CodeCacheDataSourceImpl(private val cache: CodeCache) : CodeCacheDataSource,
-    BaseDataSource() {
+class CodeCacheDataSourceImpl(private val cache: CodeCache) : CodeCacheDataSource {
     override suspend fun getAllCodes(): DomainCodeModel {
         return cache.get()
     }

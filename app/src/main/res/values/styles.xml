@@ -9,6 +9,12 @@
         <item name="android:textAppearance">@style/TextViewStyle</item>
     </style>
 
+    <style name="AppTheme.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+        <!-- для Android 5+ вы можете поменять цвет colorPrimaryDark, чтобы соответствовать цвету windowBackground -->
+        <!-- <item name="colorPrimaryDark">@android:color/white</item> -->
+    </style>
+
     <style name="TextViewStyle" parent="@android:style/TextAppearance.Widget.TextView">
         <item name="android:textAppearance">@style/GothamRegular</item>
     </style>
@@ -16,11 +22,6 @@
     <style name="GothamRegular" parent="TextAppearance.AppCompat">
         <item name="android:textStyle">normal</item>
         <item name="fontFamily">@font/gotham</item>
-    </style>
-
-    <style name="GothamBlack" parent="TextAppearance.AppCompat">
-        <item name="android:textStyle">normal</item>
-        <item name="fontFamily">@font/gothamblack</item>
     </style>
 
     <style name="ToggleButton" parent="@android:style/Widget.CompoundButton.RadioButton">
@@ -43,6 +44,4 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="CustomFloatingTheme" parent="Widget.MaterialComponents.FloatingActionButton">
-    </style>
 </resources>

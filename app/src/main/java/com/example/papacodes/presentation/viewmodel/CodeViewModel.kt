@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
-import com.example.core_common.result.Failure
 import com.example.papacodes.common.navigation.Navigator
 import com.example.papacodes.common.response.Either
+import com.example.papacodes.common.response.Failure
 import com.example.papacodes.common.viewmodel.BaseViewModel
 import com.example.papacodes.domain.model.DomainCodeModel
 import com.example.papacodes.domain.usecase.*
@@ -50,7 +50,9 @@ class CodeViewModel(
     }
 
     fun onProcessCode() {
-        navigator.processCode()
+        viewModelScope.launch {
+            navigator.processCode()
+        }
     }
 
     fun onCopyCode(code: String) {

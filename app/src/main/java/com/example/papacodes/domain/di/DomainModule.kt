@@ -18,4 +18,6 @@ val domainModule = module {
     factory<GetAllCodeUseCase> { GetAllCodesUseCaseImpl(repository = get()) }
     factory<GetAllFilteredCodes> { GetAllFilteredCodesImpl(repository = get()) }
     factory<StoreCopiedCodeUseCase> { StoreCopiedCodeUseCaseImpl(repository = get()) }
+    factory<GetInfoTutorialUseCase> { GetInfoTutorialUseCaseImpl(repository = get()) }
+    factory<SetTutorialInfoUseCase> { SetTutorialInfoUseCaseImpl(repository = get()) }
 }

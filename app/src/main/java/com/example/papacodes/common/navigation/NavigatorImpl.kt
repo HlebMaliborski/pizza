@@ -4,21 +4,23 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.navigation.NavController
+import com.example.papacodes.R
 
 class NavigatorImpl(private val navController: NavController, private val context: Context) :
     Navigator {
-    override fun processCode() {
+    override suspend fun processCode() {
         val uris = Uri.parse("https://new.papajohns.by/")
         val intents = Intent(Intent.ACTION_VIEW, uris)
         context.startActivity(intents)
     }
 
-    override fun openCodeScreen() {
-        TODO("Not yet implemented")
+    override suspend fun openCodeScreen() {
+        navController.popBackStack(R.id.codeTutorialFragment, true)
+        navController.navigate(R.id.codeFragment)
     }
 }
 
 interface Navigator {
-    fun processCode()
-    fun openCodeScreen()
+    suspend fun processCode()
+    suspend fun openCodeScreen()
 }

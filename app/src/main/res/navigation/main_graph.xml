@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/funFragment">
+    app:startDestination="@id/codeTutorialFragment"
+    tools:ignore="UnusedNavigation">
 
     <fragment
-        android:id="@+id/funFragment"
+        android:id="@+id/codeFragment"
         android:name="com.example.papacodes.presentation.view.CodeFragment"
-        android:label="FunFragment" />
+        android:label="CodeFragment" />
+    <fragment
+        android:id="@+id/codeTutorialFragment"
+        android:name="com.example.papacodes.presentation.view.CodeTutorialFragment"
+        android:label="CodeTutorialFragment">
+        <action
+            android:id="@+id/action_codeTutorialFragment_to_funFragment2"
+            app:destination="@id/codeFragment" />
+    </fragment>
 </navigation>

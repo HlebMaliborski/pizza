@@ -1,6 +1,6 @@
 package com.example.papacodes.data.repository
 
-import com.example.core_common.result.Failure
+import com.example.papacodes.common.response.Failure
 import com.example.papacodes.common.network.NetworkManager
 import com.example.papacodes.common.response.Either
 import com.example.papacodes.data.datasource.CodeCacheDataSource

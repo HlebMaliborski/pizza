@@ -4,12 +4,13 @@ import com.example.papacodes.data.api.ApiPaths
 import com.example.papacodes.data.api.ApiService
 import com.example.papacodes.data.cache.CodeCache
 import com.example.papacodes.data.cache.CodeCacheImpl
-import com.example.papacodes.data.datasource.CodeCacheDataSource
-import com.example.papacodes.data.datasource.CodeCacheDataSourceImpl
-import com.example.papacodes.data.datasource.CodeNetworkDataSource
-import com.example.papacodes.data.datasource.CodeNetworkDataSourceImpl
+import com.example.papacodes.data.datasource.*
 import com.example.papacodes.data.mapper.DataToDomainModelMapper
 import com.example.papacodes.data.mapper.DataToDomainModelMapperImpl
+import com.example.papacodes.data.repository.SharedRepositoryImpl
+import com.example.papacodes.data.shared.Shared
+import com.example.papacodes.data.shared.SharedImpl
+import com.example.papacodes.domain.repository.SharedRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -22,6 +23,9 @@ val dataModule = module {
     single<CodeNetworkDataSource> { CodeNetworkDataSourceImpl(api = get()) }
     single<CodeCacheDataSource> { CodeCacheDataSourceImpl(cache = get()) }
     single<CodeCache> { CodeCacheImpl(context = get()) }
+    single<Shared> { SharedImpl(sharedPreferences = get()) }
+    single<SharedDataSource> { SharedDataSourceImpl(shared = get()) }
+    single<SharedRepository> { SharedRepositoryImpl(sharedDataSource = get()) }
 
     single { provideOkHttpClient(get()) }
     single { provideHttpLoggingInterceptor() }

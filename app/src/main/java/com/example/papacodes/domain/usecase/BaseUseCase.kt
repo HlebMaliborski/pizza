@@ -1,6 +1,6 @@
 package com.example.papacodes.domain.usecase
 
-import com.example.core_common.result.Failure
+import com.example.papacodes.common.response.Failure
 import com.example.papacodes.common.response.Either
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

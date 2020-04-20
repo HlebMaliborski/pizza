@@ -1,4 +1,4 @@
-package com.example.core_common.result
+package com.example.papacodes.common.response
 
 /**
  * Base Class for handling errors/failures/exceptions.
@@ -36,6 +36,7 @@ sealed class Failure {
     }
 
     object MappingFailure : Failure()
+    object SharedPreferencesFailure : Failure()
 
     object None : Failure()
 }

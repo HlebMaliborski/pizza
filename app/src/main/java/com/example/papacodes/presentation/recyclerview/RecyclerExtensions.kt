@@ -24,10 +24,6 @@ fun <T, VH> RecyclerView.Adapter<VH>.notify(
             return old[oldItemPosition] == new[newItemPosition]
         }
 
-        override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {
-            return super.getChangePayload(oldItemPosition, newItemPosition)
-        }
-
         override fun getOldListSize() = old.size
 
         override fun getNewListSize() = new.size
