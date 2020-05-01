@@ -22,12 +22,6 @@ sealed class Failure {
      */
     abstract class PresentationFailure : Failure()
 
-    /**
-     * Extend this class for database specific failures.
-     */
-    abstract class DatabaseFailure : Failure() {
-    }
-
     object MappingFailure : Failure()
     object SharedPreferencesFailure : Failure()
 

@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">Коды Папы Джон’с</string>
+    <string name="app_name">Папа Джон’с. Коды</string>
     <string name="server_error_message">При загрузке кодов произошла ошибка.\nПроверьте подключение к интернету.</string>
     <string name="update">Обновить</string>
     <string name="error_message_mapping">Что-то пошло не так, попробуйте позже!</string>
 
     <string-array name="cities_array">
-        <item>Любой</item>
+        <item>Любой город</item>
         <item>Минск</item>
         <item>Витебск</item>
         <item>Могилев</item>
@@ -31,4 +31,11 @@
     <string name="bottom_filter">Фильтры</string>
 
     <string name="message_copy_done">Код %1s скопирован!</string>
+
+    <string name="tutorial_message_1">Нажмите на карточку,</string>
+    <string name="tutorial_message_2">чтобы скопировать код.</string>
+    <string name="tutorial_message_3">Нажмите на</string>
+    <string name="tutorial_message_4">"и вставьте код в поле "</string>
+    <string name="tutorial_message_5">на сайте.</string>
+    <string name="tutorial_button_text">Далее</string>
 </resources>

@@ -1,6 +1,5 @@
 package com.example.papacodes.presentation.recyclerview
 
-import android.os.SystemClock
 import android.view.View
 import android.view.ViewGroup
 import com.example.papacodes.R
