@@ -47,6 +47,8 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
     private fun initStartingViews() {
         codeRefreshLayout.isEnabled = false
         update.setOnClickListener {
+            noInternet.visibility(false)
+            codeProgressBar.visibility(true)
             funViewModel.onUpdateCodes()
         }
     }

@@ -18,7 +18,8 @@
         android:layout_marginTop="@dimen/margin_24"
         android:gravity="center"
         android:text="@string/server_error_message"
-        android:textColor="@color/colorWhite" />
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_14" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/update"
@@ -31,5 +32,5 @@
         android:paddingBottom="@dimen/margin_8"
         android:text="@string/update"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/text_12" />
+        android:textSize="@dimen/text_14"/>
 </merge>
