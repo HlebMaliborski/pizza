@@ -64,8 +64,13 @@ class CodeViewModel(
 
     fun onUpdateCodes() {
         viewModelScope.launch {
-            getAllCodeUseCase.invoke(BaseUseCase.None())
-            _viewState.value = handleResult(getAllFilteredCodes.invoke(Params(filterMap)))
+            if (_viewState.value?.presentationModel != null) {
+                _viewState.value = handleUpdate(getAllCodeUseCase.invoke(BaseUseCase.None()))
+            } else {
+                _viewState.value = handleResult(getAllCodeUseCase.invoke(BaseUseCase.None())).copy(
+                    initializeView = true
+                )
+            }
         }
     }
 
@@ -91,6 +96,17 @@ class CodeViewModel(
                 presentationModel = mapper.map(result.data),
                 initializeView = false
             )
+        }
+    }
+
+    private suspend fun handleUpdate(result: Either<Failure, DomainCodeModel>): ViewState {
+        return when (result) {
+            is Either.Error -> currentViewState().copy(
+                isFirstLoading = false,
+                failure = result.a,
+                initializeView = false
+            )
+            is Either.Success -> handleResult(getAllFilteredCodes.invoke(Params(filterMap)))
         }
     }
 

@@ -32,4 +32,7 @@
     <dimen name="margin_55">55dp</dimen>
 
     <dimen name="progress_bar_size">40dp</dimen>
+    <dimen name="no_internet_icon_size">48dp</dimen>
+    <dimen name="toast_height">48dp</dimen>
+    <dimen name="toast_width">300dp</dimen>
 </resources>

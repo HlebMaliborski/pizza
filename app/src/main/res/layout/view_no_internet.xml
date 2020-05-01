@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:gravity="center"
+    tools:layout_height="wrap_content"
+    tools:layout_width="match_parent"
+    tools:orientation="vertical"
+    tools:parentTag="android.widget.LinearLayout">
+
+    <ImageView
+        android:layout_width="@dimen/no_internet_icon_size"
+        android:layout_height="@dimen/no_internet_icon_size"
+        android:src="@drawable/ic_no_internet" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_24"
+        android:gravity="center"
+        android:text="@string/server_error_message"
+        android:textColor="@color/colorWhite" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_24"
+        android:minHeight="0dp"
+        android:paddingLeft="@dimen/margin_16"
+        android:paddingTop="@dimen/margin_8"
+        android:paddingRight="@dimen/margin_16"
+        android:paddingBottom="@dimen/margin_8"
+        android:text="@string/update"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/text_12" />
+</merge>

@@ -35,7 +35,7 @@ class CodeCacheDataSourceImpl(private val cache: CodeCache) : CodeCacheDataSourc
             }
         } else filteredDataBySize
 
-        return DomainCodeModel(filteredDataByPrice)
+        return DomainCodeModel(filteredDataByPrice, cache.get().maxPrice, cache.get().minPrice)
     }
 
     override suspend fun updateCodes(dataCode: DomainCodeModel) {

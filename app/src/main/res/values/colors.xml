@@ -9,4 +9,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGold">#EAAC30</color>
     <color name="colorGoldLight">#EABD64</color>
+
+    <color name="no_internet_border">#2AA1A2B4</color>
+    <color name="no_internet_bg">#f5f5f7</color>
 </resources>

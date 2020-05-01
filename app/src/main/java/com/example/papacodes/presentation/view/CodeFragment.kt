@@ -7,8 +7,8 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.papacodes.common.response.Failure
 import com.example.papacodes.R
+import com.example.papacodes.common.response.Failure
 import com.example.papacodes.common.view.BaseFragment
 import com.example.papacodes.presentation.extensions.observeViewState
 import com.example.papacodes.presentation.extensions.visibility
@@ -23,6 +23,7 @@ import com.example.papacodes.presentation.viewmodel.CodeViewModel.Companion.SIZE
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
 import kotlinx.android.synthetic.main.fragment_code.*
+import kotlinx.android.synthetic.main.view_no_internet.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -44,8 +45,10 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
 
     private fun initStartingViews() {
         codeRefreshLayout.isEnabled = false
+        update.setOnClickListener {
+            funViewModel.onUpdateCodes()
+        }
     }
-
 
     private fun initViewState() {
         observeViewState(funViewModel.viewState) {
@@ -61,8 +64,8 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
 
     private fun renderViewState(viewState: CodeViewModel.ViewState) {
         handleInitialization(viewState.presentationModel, viewState.initializeView)
-        handleFailure(viewState.failure)
         handleLoading(viewState.isFirstLoading)
+        handleFailure(viewState.failure)
         handleResult(viewState.presentationModel)
     }
 
@@ -72,6 +75,7 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
         codeBottomSheet.visibility(!isLoading)
         fab.visibility(!isLoading)
         codeRefreshLayout.visibility(!isLoading)
+        noInternet.visibility(false)
     }
 
     private fun handleResult(result: PresentationCodeModel?) {
@@ -85,7 +89,13 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
     private fun handleFailure(failure: Failure) {
         codeRefreshLayout.isRefreshing = false
         when (failure) {
-            is Failure.NetworkFailure -> notify(R.string.error_message_network)
+            is Failure.NetworkFailure -> {
+                noInternet.visibility(true)
+                codeRefreshLayout.visibility(false)
+                codeRecyclerView.visibility(false)
+                codeBottomSheet.visibility(false)
+                fab.visibility(false)
+            }
             is Failure.MappingFailure -> notify(R.string.error_message_mapping)
         }
     }

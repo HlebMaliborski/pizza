@@ -45,7 +45,6 @@
             app:layout_constraintTop_toBottomOf="@+id/codeStock" />
 
         <com.google.android.material.textview.MaterialTextView
-
             android:id="@+id/codeCity"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

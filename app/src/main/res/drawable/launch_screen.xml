@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
-    android:opacity="opaque">
-
-    <item android:drawable="@color/colorAccent" />
-
-    <item
-        android:width="50dp"
-        android:height="50dp"
-        android:gravity="center">
-        <shape>
-            <solid android:color="@color/colorWhite" />
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/colorAccent" />
         </shape>
     </item>
 </layer-list>

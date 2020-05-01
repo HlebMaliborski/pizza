@@ -9,10 +9,8 @@
         <item name="android:textAppearance">@style/TextViewStyle</item>
     </style>
 
-    <style name="AppTheme.Launcher">
+    <style name="Launcher" parent="AppTheme">
         <item name="android:windowBackground">@drawable/launch_screen</item>
-        <!-- для Android 5+ вы можете поменять цвет colorPrimaryDark, чтобы соответствовать цвету windowBackground -->
-        <!-- <item name="colorPrimaryDark">@android:color/white</item> -->
     </style>
 
     <style name="TextViewStyle" parent="@android:style/TextAppearance.Widget.TextView">
