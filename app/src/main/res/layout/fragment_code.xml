@@ -11,11 +11,12 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/margin_55">
 
-        <androidx.core.widget.ContentLoadingProgressBar
+        <ProgressBar
             android:id="@+id/codeProgressBar"
             android:layout_width="@dimen/progress_bar_size"
             android:layout_height="@dimen/progress_bar_size"
             android:layout_gravity="center"
+            android:theme="@style/ProgressBarTheme"
             android:visibility="gone" />
 
         <com.example.papacodes.common.view.NoInternetView

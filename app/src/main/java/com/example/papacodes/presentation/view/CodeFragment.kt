@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.papacodes.R
 import com.example.papacodes.common.response.Failure
@@ -185,6 +186,16 @@ class CodeFragment : BaseFragment(R.layout.fragment_code) {
     }
 
     private fun initSwipeLayout() {
+        context?.let {
+            ContextCompat.getColor(
+                it,
+                R.color.colorPrimary
+            )
+        }?.let {
+            codeRefreshLayout.setColorSchemeColors(
+                it
+            )
+        }
         codeRefreshLayout.setOnRefreshListener {
             funViewModel.onUpdateCodes()
         }

@@ -7,10 +7,10 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textAppearance">@style/TextViewStyle</item>
+        <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 
     <style name="Launcher" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/launch_screen</item>
     </style>
 
     <style name="TextViewStyle" parent="@android:style/TextAppearance.Widget.TextView">
@@ -42,4 +42,7 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="ProgressBarTheme">
+        <item name="colorAccent">@color/colorWhite</item>
+    </style>
 </resources>

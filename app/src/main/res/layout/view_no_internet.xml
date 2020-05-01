@@ -20,12 +20,11 @@
         android:text="@string/server_error_message"
         android:textColor="@color/colorWhite" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_24"
-        android:minHeight="0dp"
         android:paddingLeft="@dimen/margin_16"
         android:paddingTop="@dimen/margin_8"
         android:paddingRight="@dimen/margin_16"
