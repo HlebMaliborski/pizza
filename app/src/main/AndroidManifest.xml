@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.papacodes">
 
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -14,7 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_papa_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".main.view.MainActivity" android:theme="@style/Launcher">
+        <activity
+            android:name=".main.view.MainActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Launcher"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
