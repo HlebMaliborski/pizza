@@ -13,26 +13,19 @@ sealed class Failure {
     abstract class NetworkFailure : Failure() {
         object NetworkConnection : NetworkFailure()
         object EmptyNetworkResponse : NetworkFailure()
-        object SocketTimeoutException : NetworkFailure()
         object UnknownHostFailure : NetworkFailure()
         class ServerError(val code: String) : Failure()
     }
 
     /**
-     * Extend this class for domain specific failures.*/
-    abstract class DomainFailure(val exception: Exception) : Failure()
-
-    /**
      * Extend this class for presentation specific failures.
      */
-    abstract class PresentationFailure(val exception: String) : Failure()
+    abstract class PresentationFailure : Failure()
 
     /**
      * Extend this class for database specific failures.
      */
     abstract class DatabaseFailure : Failure() {
-        object EmptyTable : DatabaseFailure()
-        object SqlException : DatabaseFailure()
     }
 
     object MappingFailure : Failure()
