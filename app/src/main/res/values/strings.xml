@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Папа Джон’с. Коды</string>
+    <string name="app_name">Папа Джон’с. Промокоды</string>
     <string name="server_error_message">При загрузке кодов произошла ошибка.\nПроверьте подключение к интернету.</string>
     <string name="update">Обновить</string>
     <string name="error_message_mapping">Что-то пошло не так, попробуйте позже!</string>
