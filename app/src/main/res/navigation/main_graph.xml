@@ -8,11 +8,11 @@
 
     <fragment
         android:id="@+id/codeFragment"
-        android:name="com.example.papacodes.presentation.view.CodeFragment"
+        android:name="com.devlopersquad.papacodes.presentation.view.CodeFragment"
         android:label="CodeFragment" />
     <fragment
         android:id="@+id/codeTutorialFragment"
-        android:name="com.example.papacodes.presentation.view.CodeTutorialFragment"
+        android:name="com.devlopersquad.papacodes.presentation.view.CodeTutorialFragment"
         android:label="CodeTutorialFragment">
         <action
             android:id="@+id/action_codeTutorialFragment_to_funFragment2"

@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "557030958312",
-    "firebase_url": "https://papacodes-be4bb.firebaseio.com",
-    "project_id": "papacodes-be4bb",
-    "storage_bucket": "papacodes-be4bb.appspot.com"
+    "project_number": "453883616168",
+    "firebase_url": "https://papa-codes.firebaseio.com",
+    "project_id": "papa-codes",
+    "storage_bucket": "papa-codes.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:557030958312:android:3d9fb48a6cc339afe9d55d",
+        "mobilesdk_app_id": "1:453883616168:android:7441168191e77492bd9b9d",
         "android_client_info": {
-          "package_name": "com.example.papacodes"
+          "package_name": "com.devlopersquad.papacodes"
         }
       },
       "oauth_client": [
         {
-          "client_id": "557030958312-s6qned75jfa50t3l511f8918ll3sish3.apps.googleusercontent.com",
+          "client_id": "453883616168-sd18omteg8qqu15kneckqo9g0shhm333.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBofUXl5ZQFnSEOi2e_otKZ8yqLNJTzx98"
+          "current_key": "AIzaSyAkAqxEkMynP63Opop4qNqS5rY1WLcfYeo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "557030958312-s6qned75jfa50t3l511f8918ll3sish3.apps.googleusercontent.com",
+              "client_id": "453883616168-sd18omteg8qqu15kneckqo9g0shhm333.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

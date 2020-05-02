@@ -19,7 +19,7 @@
             android:theme="@style/ProgressBarTheme"
             android:visibility="gone" />
 
-        <com.example.papacodes.common.view.NoInternetView
+        <com.devlopersquad.papacodes.common.view.NoInternetView
             android:id="@+id/noInternet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
